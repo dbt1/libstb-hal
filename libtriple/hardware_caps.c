@@ -25,6 +25,7 @@ static hw_caps_t caps = {
 	.display_yres = 64,
 	.can_set_display_brightness = 0,
 	.display_can_deepstandby = 0;
+	.display_can_set_brightness = 0;
 	.boxvendor = "Armas",
 	.boxname = "TripleDragon",
 	.boxarch = "ppc405"
