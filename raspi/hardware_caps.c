@@ -31,7 +31,6 @@ hw_caps_t *get_hwcaps(void)
 	caps.display_xres = 8;
 	caps.can_set_display_brightness = 0;
 	caps.display_can_deepstandby = 0;
-	caps.display_can_set_brightness = 0;
 	strcpy(caps.boxvendor, "Raspberry");
 	strcpy(caps.boxname, "Pi");
 	if (! uname(&u))
