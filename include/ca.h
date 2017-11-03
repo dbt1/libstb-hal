@@ -7,6 +7,10 @@
 #include <stdint.h>
 #include "cs_types.h"
 #include <vector>
+#include <set>
+typedef std::set<int> ca_map_t;
+typedef ca_map_t::iterator ca_map_iterator_t;
+
 typedef std::vector<u16>			CaIdVector;
 typedef std::vector<u16>::iterator		CaIdVectorIterator;
 typedef std::vector<u16>::const_iterator	CaIdVectorConstIterator;
@@ -92,6 +96,8 @@ public:
 	static cCA *GetInstance(void);
 	bool SendPMT(int Unit, unsigned char *Data, int Len, CA_SLOT_TYPE SlotType = CA_SLOT_TYPE_ALL);
 	bool SendCAPMT(u64 /*Source*/, u8 /*DemuxSource*/, u8 /*DemuxMask*/, const unsigned char * /*CAPMT*/, u32 /*CAPMTLen*/, const unsigned char * /*RawPMT*/, u32 /*RawPMTLen*/, enum CA_SLOT_TYPE SlotType = CA_SLOT_TYPE_ALL) { (void)SlotType; return true; };
+	bool SendCAPMT(u64 /*Source*/, u8 /*DemuxSource*/, u8 /*DemuxMask*/, const unsigned char * /*CAPMT*/, u32 /*CAPMTLen*/, const unsigned char * /*RawPMT*/, u32 /*RawPMTLen*/, enum CA_SLOT_TYPE SlotType = CA_SLOT_TYPE_ALL, unsigned char scrambled = 0, ca_map_t camap ={0}, int mode = 0, bool enable = false) { (void)SlotType;(void)scrambled;(void)camap;(void)mode;(void)enable; return true; };
+
 	bool SendMessage(const CA_MESSAGE *Msg);
 	void SetInitMask(enum CA_INIT_MASK InitMask);
 	int GetCAIDS(CaIdVector & /*Caids*/) { return 0; };

@@ -28,6 +28,8 @@ hw_caps_t *get_hwcaps(void)
 	caps.display_type = HW_DISPLAY_LINE_TEXT;
 	caps.has_HDMI = 1;
 	caps.display_xres = 8;
+	caps.display_can_deepstandby = 0;
+	caps.display_can_set_brightness = 0;
 	caps.can_set_display_brightness = 0;
 	strcpy(caps.boxvendor, "Generic");
 	strcpy(caps.boxname, "PC");

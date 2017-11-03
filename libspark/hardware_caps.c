@@ -38,6 +38,8 @@ hw_caps_t *get_hwcaps(void)
 	caps.has_SCART = 1;
 	caps.display_xres = 4;
 	caps.can_set_display_brightness = 0;
+	caps.display_can_deepstandby = 0;
+	caps.display_can_set_brightness = 0;
 	caps.force_tuner_2G = 1; /* I have patched the drivers to fix this, but not everyone has */
 	strcpy(caps.boxvendor, "SPARK");
 	const char *tmp;
