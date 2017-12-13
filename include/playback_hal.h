@@ -22,6 +22,10 @@
 #include <stdint.h>
 #include <vector>
 
+extern "C" {
+#include <libavformat/avformat.h>
+}
+
 /*
  * This is actually the max number that could be returned by
  * FindAllPids() / FindAllSubs().
@@ -65,6 +69,9 @@ public:
 	void GetMetadata(std::vector<std::string> /*&keys*/, std::vector<std::string> /*&values*/){}
 	void GetPts(uint64_t &/*pts*/){}
 	bool SetSubtitlePid(int /*pid*/){return false;}
+	AVFormatContext *GetAVFormatContext(){return NULL;}
+	void ReleaseAVFormatContext(){}
+
 	//
 	cPlayback(int num = 0);
 	~cPlayback();
