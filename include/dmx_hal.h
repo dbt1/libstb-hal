@@ -81,6 +81,7 @@ public:
 	static int GetSource(int unit);
 	cDemux(int num = 0);
 	~cDemux();
+	int getFD(void) { return fd; };         /* needed by cPlayback class */
 private:
 	void removePid(unsigned short Pid);	/* needed by cRecord class */
 	int num;
