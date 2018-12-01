@@ -31,6 +31,7 @@ hw_caps_t *get_hwcaps(void)
 	caps.display_can_deepstandby = 0;
 	caps.display_can_set_brightness = 0;
 	caps.display_has_statusline = 0;
+	caps.has_button_vformat = 0;
 	strcpy(caps.boxvendor, "Generic");
 	strcpy(caps.boxname, "PC");
 	if (! uname(&u))
