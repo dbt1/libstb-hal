@@ -115,9 +115,9 @@ libduckbox/Makefile
 libdvbci/Makefile
 libeplayer3/Makefile
 libeplayer3-arm/Makefile
+libraspi/Makefile
 libspark/Makefile
 libtriple/Makefile
-raspi/Makefile
 tools/Makefile
 ])
 
