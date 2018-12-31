@@ -59,5 +59,5 @@ pkginclude_HEADERS = \
 	include/playback_hal.h \
 	include/pwrmngr.h \
 	include/record_hal.h \
-	include/video_cs.h \
-	include/video_hal.h
+	include/version_hal.h \
+	include/video_cs.h
