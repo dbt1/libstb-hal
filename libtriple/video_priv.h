@@ -75,7 +75,7 @@ public:
 
 	/* set video_system */
 	int SetVideoSystem(int video_system, bool remember = true);
-	void ShowPicture(const char * fname);
+	bool ShowPicture(const char * fname);
 	void StopPicture();
 	void Standby(unsigned int bOn);
 	void Pig(int x, int y, int w, int h);

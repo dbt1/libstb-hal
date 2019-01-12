@@ -282,16 +282,17 @@ void cVideo::SetVideoMode(analog_mode_t)
 {
 }
 
-void cVideo::ShowPicture(const char *fname)
+bool cVideo::ShowPicture(const char *fname)
 {
-	vdec->ShowPicture(fname);
+	return vdec->ShowPicture(fname);
 }
 
-void VDec::ShowPicture(const char *fname)
+bool VDec::ShowPicture(const char *fname)
 {
+	bool ret = false;
 	lt_info("%s(%s)\n", __func__, fname);
 	if (access(fname, R_OK))
-		return;
+		return ret;
 	still_m.lock();
 	stillpicture = true;
 	buf_num = 0;
@@ -312,7 +313,7 @@ void VDec::ShowPicture(const char *fname)
 
 	if (avformat_open_input(&avfc, fname, NULL, NULL) < 0) {
 		lt_info("%s: Could not open file %s\n", __func__, fname);
-		return;
+		return ret;
 	}
 
 	if (avformat_find_stream_info(avfc, NULL) < 0) {
@@ -385,6 +386,7 @@ void VDec::ShowPicture(const char *fname)
 				buf_num--;
 			}
 			buf_m.unlock();
+			ret = true;
 		}
 	}
 	av_packet_unref(&avpkt);
@@ -396,6 +398,7 @@ void VDec::ShowPicture(const char *fname)
  out_close:
 	avformat_close_input(&avfc);
 	lt_debug("%s(%s) end\n", __func__, fname);
+	return ret;
 }
 
 void cVideo::StopPicture()

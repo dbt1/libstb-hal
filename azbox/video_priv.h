@@ -46,7 +46,7 @@ public:
 	int setBlank(int blank);
 	int SetStreamType(VIDEO_FORMAT type);
 	void SetSyncMode(AVSYNC_TYPE mode);
-	void ShowPicture(const char * fname);
+	bool ShowPicture(const char * fname);
 	void Standby(unsigned int bOn);
 	void Pig(int x, int y, int w, int h, int osd_w, int osd_h);
 

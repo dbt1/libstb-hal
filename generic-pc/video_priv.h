@@ -80,7 +80,7 @@ class VDec : public OpenThreads::Thread
 		int Stop(bool blank = true);
 
 		int SetStreamType(VIDEO_FORMAT type);
-		void ShowPicture(const char * fname);
+		bool ShowPicture(const char * fname);
 		void Pig(int x, int y, int w, int h);
 		bool GetScreenImage(unsigned char * &data, int &xres, int &yres, bool get_video = true, bool get_osd = false, bool scale_to_video = false);
 		SWFramebuffer *getDecBuf(void);

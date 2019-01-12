@@ -351,13 +351,14 @@ void cVideo::SetVideoMode(analog_mode_t mode)
 	proc_put("/proc/stb/avs/0/colorformat", m, strlen(m));
 }
 
-void cVideo::ShowPicture(const char * fname)
+bool cVideo::ShowPicture(const char * fname)
 {
-	vdec->ShowPicture(fname);
+	return vdec->ShowPicture(fname);
 }
 
-void VDec::ShowPicture(const char * fname)
+bool VDec::ShowPicture(const char * fname)
 {
+	bool ret = false;
 	lt_debug("%s(%s)\n", __func__, fname);
 	char destname[512];
 	char cmd[512];
@@ -369,18 +370,18 @@ void VDec::ShowPicture(const char * fname)
 	{
 		/* does not work and the driver does not seem to like it */
 		lt_info("%s: video_standby == true\n", __func__);
-		return;
+		return ret;
 	}
 	if (fd < 0)
 	{
-		lt_info("%s: decoder not opened?\n", __func__);
-		return;
+		lt_info("%s: decoder not opened\n", __func__);
+		return ret;
 	}
 	strcpy(destname, "/var/cache");
 	if (stat(fname, &st2))
 	{
 		lt_info("%s: could not stat %s (%m)\n", __func__, fname);
-		return;
+		return ret;
 	}
 	mkdir(destname, 0755);
 	/* the cache filename is (example for /share/tuxbox/neutrino/icons/radiomode.jpg):
@@ -430,10 +431,11 @@ void VDec::ShowPicture(const char * fname)
 	read(mfd, iframe, st.st_size);
 	show_iframe(fd, iframe, st.st_size);
 	free(iframe);
+	ret = true;
  out:
 	close(mfd);
 	pthread_mutex_unlock(&stillp_mutex);
-	return;
+	return ret;
 }
 
 void cVideo::StopPicture()
