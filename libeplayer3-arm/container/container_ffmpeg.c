@@ -2509,6 +2509,10 @@ int32_t container_ffmpeg_update_tracks(Context_t *context, char *filename, int32
 							ffmpeg_printf(1, "cAVIdx[%d]: MANAGER_ADD track AUDIO\n");
 							if (context->manager->audio->Command(context, MANAGER_ADD, &track) < 0)
 							{
+								if(track.aacbuf){
+									free(track.aacbuf);
+									track.aacbuf = NULL;
+								}
 								/* konfetti: fixme: is this a reason to return with error? */
 								ffmpeg_err("failed to add track %d\n", n);
 							}
