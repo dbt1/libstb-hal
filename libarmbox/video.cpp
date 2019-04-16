@@ -1090,7 +1090,7 @@ void get_osd_buf(unsigned char *osd_data)
 		return;
 	}
 
-	void *lfb = (unsigned char*)mmap(0, fix_screeninfo.smem_len, PROT_READ | PROT_WRITE, MAP_SHARED, fb, 0);
+	void *lfb = (unsigned char*)mmap(0, fix_screeninfo.smem_len, PROT_READ , MAP_SHARED, fb, 0);
 	if(lfb == MAP_FAILED)
 	{
 		fprintf(stderr, "Framebuffer: <Memmapping failed>\n");
