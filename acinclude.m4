@@ -143,7 +143,7 @@ AC_ARG_WITH(boxtype,
 	[BOXTYPE="generic"])
 
 AC_ARG_WITH(boxmodel,
-	AS_HELP_STRING([--with-boxmodel], [valid for generic: raspi])
+	AS_HELP_STRING([--with-boxmodel], [valid for generic: generic, raspi])
 AS_HELP_STRING([], [valid for duckbox: ufs910, ufs912, ufs913, ufs922, atevio7500, fortis_hdbox, octagon1008, hs7110, hs7810a, hs7119, hs7819, dp7000, cuberevo, cuberevo_mini, cuberevo_mini2, cuberevo_250hd, cuberevo_2000hd, cuberevo_3000hd, ipbox9900, ipbox99, ipbox55, arivalink200, tf7700, hl101])
 AS_HELP_STRING([], [valid for spark: spark, spark7162])
 AS_HELP_STRING([], [valid for armbox: hd51, hd60, bre2ze4k, vusolo4k, vuduo4k, vuzero4k, h7])
@@ -170,7 +170,14 @@ AS_HELP_STRING([], [valid for mipsbox: vuduo]),
 				AC_MSG_ERROR([unknown model $withval for boxtype $BOXTYPE])
 			fi
 		;;
-		raspi)
+		vuduo)
+			if test "$BOXTYPE" = "mipsbox"; then
+				BOXMODEL="$withval"
+			else
+				AC_MSG_ERROR([unknown model $withval for boxtype $BOXTYPE])
+			fi
+		;;
+		generic|raspi)
 			if test "$BOXTYPE" = "generic"; then
 				BOXMODEL="$withval"
 			else
@@ -180,7 +187,8 @@ AS_HELP_STRING([], [valid for mipsbox: vuduo]),
 		*)
 			AC_MSG_ERROR([unsupported value $withval for --with-boxmodel])
 		;;
-	esac])
+	esac],
+	[BOXMODEL="generic"])
 
 AC_SUBST(BOXTYPE)
 AC_SUBST(BOXMODEL)
@@ -229,6 +237,7 @@ AM_CONDITIONAL(BOXMODEL_VUZERO4K, test "$BOXMODEL" = "vuzero4k")
 AM_CONDITIONAL(BOXMODEL_VUDUO, test "$BOXMODEL" = "vuduo")
 AM_CONDITIONAL(BOXMODEL_H7, test "$BOXMODEL" = "h7")
 
+AM_CONDITIONAL(BOXMODEL_GENERIC, test "$BOXMODEL" = "generic")
 AM_CONDITIONAL(BOXMODEL_RASPI, test "$BOXMODEL" = "raspi")
 
 if test "$BOXTYPE" = "azbox"; then
@@ -316,6 +325,8 @@ elif test "$BOXMODEL" = "vuduo"; then
 	AC_DEFINE(BOXMODEL_VUDUO, 1, [vuduo])
 elif test "$BOXMODEL" = "h7"; then
 	AC_DEFINE(BOXMODEL_H7, 1, [h7])
+elif test "$BOXMODEL" = "generic"; then
+	AC_DEFINE(BOXMODEL_GENERIC, 1, [generic pc])
 elif test "$BOXMODEL" = "raspi"; then
 	AC_DEFINE(BOXMODEL_RASPI, 1, [raspberry pi])
 fi
