@@ -125,8 +125,8 @@ static int32_t container_ffmpeg_seek(Context_t *context, int64_t sec, uint8_t ab
 //static int32_t container_ffmpeg_seek_rel(Context_t *context, off_t pos, int64_t pts, int64_t sec);
 static int32_t container_ffmpeg_get_length(Context_t *context, int64_t *length);
 static int64_t calcPts(uint32_t avContextIdx, AVStream *stream, int64_t pts);
-static int32_t container_ffmpeg_stop(Context_t *context);
 static int64_t doCalcPts(int64_t start_time, const AVRational time_base, int64_t pts);
+static int32_t container_ffmpeg_stop(Context_t *context);
 
 /* Progressive playback means that we play local file
  * but this local file can grows up, for example
@@ -2003,7 +2003,7 @@ int32_t container_ffmpeg_update_tracks(Context_t *context, char *filename, int32
 #endif
 
 	ffmpeg_printf(20, "dump format\n");
-	if((avContextTab[0] != NULL) && (FFMPEG_DEBUG_LEVEL > 0))
+	if ((avContextTab[0] != NULL) && (FFMPEG_DEBUG_LEVEL > 0))
 		av_dump_format(avContextTab[0], 0, filename, 0);
 
 

@@ -284,17 +284,41 @@ elif test "$BOXMODEL" = "vusolo4k"; then
 	AC_DEFINE(BOXMODEL_VUSOLO4K, 1, [vusolo4k])
 elif test "$BOXMODEL" = "vuduo4k"; then
 	AC_DEFINE(BOXMODEL_VUDUO4K, 1, [vuduo4k])
+elif test "$BOXMODEL" = "vuultimo4k"; then
+	AC_DEFINE(BOXMODEL_VUULTIMO4K, 1, [vuultimo4k])
+elif test "$BOXMODEL" = "vuuno4k"; then
+	AC_DEFINE(BOXMODEL_VUUNO4K, 1, [vuuno4k])
+elif test "$BOXMODEL" = "vuuno4kse"; then
+	AC_DEFINE(BOXMODEL_VUUNO4KSE, 1, [vuuno4kse])
 elif test "$BOXMODEL" = "vuzero4k"; then
 	AC_DEFINE(BOXMODEL_VUZERO4K, 1, [vuzero4k])
 elif test "$BOXMODEL" = "vuduo"; then
 	AC_DEFINE(BOXMODEL_VUDUO, 1, [vuduo])
-elif test "$BOXMODEL" = "h7"; then
-	AC_DEFINE(BOXMODEL_H7, 1, [h7])
-elif test "$BOXMODEL" = "generic"; then
-	AC_DEFINE(BOXMODEL_GENERIC, 1, [generic pc])
-elif test "$BOXMODEL" = "raspi"; then
-	AC_DEFINE(BOXMODEL_RASPI, 1, [raspberry pi])
 fi
+
+# all vuplus BOXMODELs
+case "$BOXMODEL" in
+	vusolo4k|vuduo4k|vuultimo4k|vuuno4k|vuuno4kse|vuzero4k|vuduo)
+		AC_DEFINE(BOXMODEL_VUPLUS, 1, [vuplus])
+		vuplus=true
+	;;
+	*)
+		vuplus=false
+	;;
+esac
+AM_CONDITIONAL(BOXMODEL_VUPLUS, test "$vuplus" = "true")
+
+# all vuplus4k BOXMODELs
+case "$BOXMODEL" in
+	vusolo4k|vuduo4k|vuultimo4k|vuuno4k|vuuno4kse|vuzero4k)
+		AC_DEFINE(BOXMODEL_VUPLUS4K, 1, [vuplus4k])
+		vuplus4k=true
+	;;
+	*)
+		vuplus4k=false
+	;;
+esac
+AM_CONDITIONAL(BOXMODEL_VUPLUS4K, test "$vuplus4k" = "true")
 ])
 
 dnl backward compatiblity

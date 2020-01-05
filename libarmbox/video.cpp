@@ -654,7 +654,7 @@ void cVideo::SetVideoMode(analog_mode_t mode)
 bool cVideo::ShowPicture(const char * fname)
 {
 	bool ret = false;
-	hal_info("%s(%s)\n", __func__, fname);
+	hal_debug("%s(%s)\n", __func__, fname);
 	if (video_standby)
 	{
 		/* does not work and the driver does not seem to like it */
