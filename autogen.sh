@@ -1,6 +1,6 @@
 #!/bin/sh
 
-package="ni-libstb-hal"
+package="libstb-hal"
 
 srcdir=`dirname $0`
 test -z "$srcdir" && srcdir=.
