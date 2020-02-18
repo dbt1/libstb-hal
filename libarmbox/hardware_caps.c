@@ -201,7 +201,7 @@ hw_caps_t *get_hwcaps(void)
 	strcpy(caps.boxname, "Zgemma H7C/S");
 	strcpy(caps.boxarch, "BCM7251S");
 #endif
-#if BOXMODEL_OSMIOPLUS4K
+#if BOXMODEL_OSMIO4KPLUS
         initialized = 1;
         caps.has_CI = 0;
         caps.can_cec = 1;
