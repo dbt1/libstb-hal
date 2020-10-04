@@ -1,6 +1,6 @@
 # explicit defines for separate revision handling
 define(ver_major, 1)
-define(ver_minor, 3)
+define(ver_minor, 4)
 define(ver_micro, 0)
 
 # sync with current git
