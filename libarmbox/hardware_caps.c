@@ -33,7 +33,6 @@ hw_caps_t *get_hwcaps(void)
 		caps.can_pip = 1;
 
 #if BOXMODEL_VUSOLO4K
-	initialized = 1;
 	caps.has_CI = 1;
 	caps.can_cec = 1;
 	caps.can_cpufreq = 0;
@@ -55,7 +54,6 @@ hw_caps_t *get_hwcaps(void)
 	strcpy(caps.boxarch, "BCM7376");
 #endif
 #if BOXMODEL_VUDUO4K
-	initialized = 1;
 	caps.has_CI = 2;
 	caps.can_cec = 1;
 	caps.can_cpufreq = 0;
@@ -78,7 +76,6 @@ hw_caps_t *get_hwcaps(void)
 	strcpy(caps.boxarch, "BCM7278");
 #endif
 #if BOXMODEL_VUDUO4KSE
-	initialized = 1;
 	caps.has_CI = 2;
 	caps.can_cec = 1;
 	caps.can_shutdown = 1;
@@ -100,7 +97,6 @@ hw_caps_t *get_hwcaps(void)
 	strcpy(caps.boxarch, "BCM7444S");
 #endif
 #if BOXMODEL_VUULTIMO4K
-	initialized = 1;
 	caps.has_CI = 2;
 	caps.can_cec = 1;
 	caps.can_cpufreq = 0;
@@ -123,7 +119,6 @@ hw_caps_t *get_hwcaps(void)
 	strcpy(caps.boxarch, "BCM7444S");
 #endif
 #if BOXMODEL_VUZERO4K
-	initialized = 1;
 	caps.has_CI = 1;
 	caps.can_cec = 1;
 	caps.can_cpufreq = 0;
@@ -143,7 +138,6 @@ hw_caps_t *get_hwcaps(void)
 	strcpy(caps.boxarch, "BCM72604");
 #endif
 #if BOXMODEL_VUUNO4KSE
-	initialized = 1;
 	caps.has_CI = 1;
 	caps.can_cec = 1;
 	caps.can_cpufreq = 0;
@@ -166,7 +160,6 @@ hw_caps_t *get_hwcaps(void)
 	strcpy(caps.boxarch, "BCM7252S");
 #endif
 #if BOXMODEL_VUUNO4K
-	initialized = 1;
 	caps.has_CI = 1;
 	caps.can_cec = 1;
 	caps.can_cpufreq = 0;
@@ -186,7 +179,6 @@ hw_caps_t *get_hwcaps(void)
 	strcpy(caps.boxarch, "BCM7252S");
 #endif
 #if BOXMODEL_HD51
-	initialized = 1;
 	caps.has_CI = 1;
 	caps.can_cec = 1;
 	caps.can_cpufreq = 0;
@@ -207,7 +199,6 @@ hw_caps_t *get_hwcaps(void)
 	strcpy(caps.boxarch, "BCM7251S");
 #endif
 #if BOXMODEL_BRE2ZE4K
-	initialized = 1;
 	caps.has_CI = 1;
 	caps.can_cec = 1;
 	caps.can_cpufreq = 0;
@@ -228,7 +219,6 @@ hw_caps_t *get_hwcaps(void)
 	strcpy(caps.boxarch, "BCM7251S");
 #endif
 #if BOXMODEL_H7
-	initialized = 1;
 	caps.has_CI = 1;
 	caps.can_cec = 1;
 	caps.can_cpufreq = 0;
@@ -249,7 +239,6 @@ hw_caps_t *get_hwcaps(void)
 	strcpy(caps.boxarch, "BCM7251S");
 #endif
 #if BOXMODEL_HD60
-	initialized = 1;
 	caps.has_CI = 0;
 	caps.can_cec = 1;
 	caps.can_cpufreq = 0;
@@ -270,7 +259,6 @@ hw_caps_t *get_hwcaps(void)
 	strcpy(caps.boxarch, "HI3798M");
 #endif
 #if BOXMODEL_HD61
-	initialized = 1;
 	caps.has_CI = 2;
 	caps.can_cec = 1;
 	caps.can_shutdown = 1;
@@ -289,7 +277,6 @@ hw_caps_t *get_hwcaps(void)
 	strcpy(caps.boxarch, "HI3798M");
 #endif
 #if BOXMODEL_MULTIBOXSE
-	initialized = 1;
 	caps.has_CI = 0;
 	caps.can_cec = 1;
 	caps.can_cpufreq = 0;
@@ -310,7 +297,6 @@ hw_caps_t *get_hwcaps(void)
 	strcpy(caps.boxarch, "HI3798M");
 #endif
 #if BOXMODEL_OSMINI4K
-	initialized = 1;
 	caps.has_CI = 0;
 	caps.can_cec = 1;
 	caps.can_cpufreq = 0;
@@ -331,7 +317,6 @@ hw_caps_t *get_hwcaps(void)
 	strcpy(caps.boxarch, "BCM72604");
 #endif
 #if BOXMODEL_OSMIO4K
-	initialized = 1;
 	caps.has_CI = 0;
 	caps.can_cec = 1;
 	caps.can_cpufreq = 0;
@@ -352,7 +337,6 @@ hw_caps_t *get_hwcaps(void)
 	strcpy(caps.boxarch, "BCM72604");
 #endif
 #if BOXMODEL_OSMIO4KPLUS
-	initialized = 1;
 	caps.has_CI = 0;
 	caps.can_cec = 1;
 	caps.can_cpufreq = 0;
@@ -373,5 +357,7 @@ hw_caps_t *get_hwcaps(void)
 	strcpy(caps.boxname, "OS mio+ 4K");
 	strcpy(caps.boxarch, "BCM72604");
 #endif
+
+	initialized = 1;
 	return &caps;
 }

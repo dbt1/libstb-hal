@@ -30,7 +30,6 @@ hw_caps_t *get_hwcaps(void)
 	if (access("/dev/dvb/adapter0/video1", F_OK) != -1)
 		caps.can_pip = 1;
 
-	initialized = 1;
 	caps.can_cpufreq = 0;
 	caps.can_shutdown = 1;  /* for testing */
 	caps.display_type = HW_DISPLAY_LINE_TEXT;
@@ -51,5 +50,6 @@ hw_caps_t *get_hwcaps(void)
 	else
 		fprintf(stderr, "%s: uname() failed: %m\n", __func__);
 
+	initialized = 1;
 	return &caps;
 }
